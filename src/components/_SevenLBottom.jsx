@@ -1,0 +1,93 @@
+import { motion } from "framer-motion";
+import React from "react";
+import styled from "styled-components";
+
+const ArrowContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  margin-top: 22px;
+  position: absolute;
+  top: 375px;
+  right: 578px; /* Adjusted position to reflect the flip */
+`;
+
+const ArrowLine = styled.div`
+  position: relative;
+  width: 2px;
+  height: 300px;
+  background-color: transparent;
+  overflow: hidden;
+`;
+
+const HorizontalLine = styled.div`
+  position: absolute;
+  top: 0px; /* Move to the top of the vertical line */
+  right: 0; /* Positioned at the right of the vertical line */
+  width: 320px; /* Length of the horizontal line */
+  height: 2px;
+  background-color: transparent;
+`;
+
+const FillLineVertical = styled(motion.div)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background-color: #67b2e4;
+  transform-origin: bottom;
+`;
+
+const FillLineHorizontal = styled(motion.div)`
+  position: absolute;
+  top: 0;
+  right: 0; /* Start the animation from the right side */
+  width: 100%;
+  height: 2px;
+  background-color: #67b2e4;
+  transform-origin: right; /* Ensures the animation flows from right to left */
+`;
+
+const _SevenLBottom = ({ animateLine }) => {
+  const fillLineVerticalVariants = {
+    initial: { scaleY: 0 },
+    animate: {
+      scaleY: 1,
+      transition: { duration: 2, ease: "easeInOut" },
+    },
+  };
+
+  const fillLineHorizontalVariants = {
+    initial: { scaleX: 0 },
+    animate: {
+      scaleX: 1,
+      transition: { delay: 2, duration: 1, ease: "easeInOut" },
+    },
+  };
+
+  return (
+    <ArrowContainer>
+      {/* Vertical Line */}
+      <ArrowLine>
+        <FillLineVertical
+          variants={fillLineVerticalVariants}
+          initial="initial"
+          animate={animateLine}
+        />
+      </ArrowLine>
+      {/* Horizontal Line */}
+      <HorizontalLine>
+        <FillLineHorizontal
+          variants={fillLineHorizontalVariants}
+          initial="initial"
+          animate={animateLine}
+        />
+      </HorizontalLine>
+    </ArrowContainer>
+  );
+};
+
+export default _SevenLBottom;
