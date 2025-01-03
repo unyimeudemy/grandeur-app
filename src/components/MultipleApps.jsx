@@ -52,7 +52,6 @@ const Iphone = styled.img`
     width: 450px;
     margin-top: 280px;
     margin-left: 300px;
-    // background-image: url(${iphoneWallPaper});
     background-position: center; /* Center the image */
     background-repeat: no-repeat; 
     object-fit: contain;
