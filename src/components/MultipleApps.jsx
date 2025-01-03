@@ -13,6 +13,7 @@ import philipsIcon from "../images/philipsIcon.webp";
 import samsungIcon from "../images/samsungIcon.webp";
 import trueviewIcon from "../images/trueviewIcon.webp";
 import GranduerApp from "../images/grandeurApp.svg"
+import replayIcon from "../images/replay.svg"
 import { useAnimationControls, motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import StraightLineLT from "./StraightLineLT";
@@ -231,6 +232,41 @@ const TypingWrapper2 = styled.div`
 `;
 
 
+const ReplayContainer = styled.div`
+    width: 300px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: -200px;
+    right: -500px;
+`
+
+const Replay = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    &:hover{
+        cursor: pointer;
+    }
+
+`
+
+const ReplayIcon = styled.img`
+    width: 20px;
+    height: 20px;
+`
+
+const ReplayText = styled.div`
+    font-family: Roboto;
+    font-weight: regular;
+    font-size: 15px;
+    color: #666666;
+`
+
 
 
 const MultipleApps = () => {
@@ -260,12 +296,19 @@ const MultipleApps = () => {
 
 
 
-    const [changeText, setChangeText] = useState(true)
+    const [changeText, setChangeText] = useState(false)
     const [showLines, setShowLines] = useState(true)
+    const [showReplay, setShowReplay] = useState(true)
+
+    const handleClick = () => {
+        window.location.reload();
+        handleAnimate()
+    }
 
 
     const handleAnimate = async () => {
-
+        setShowReplay(false)
+        setChangeText(true)
         animateArrow_1.set("initial")
         straightLineLR.set("initial")
         straightLineRL.set("initial")
@@ -299,11 +342,8 @@ const MultipleApps = () => {
         await bottomSevenL.start("animate")
 
 
-
-
-
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        setChangeText(!changeText)
+        await setChangeText(false)
         await new Promise((resolve) => setTimeout(resolve, 3000));
 
 
@@ -325,6 +365,9 @@ const MultipleApps = () => {
             _bottomSevenL.start("animate"),
             _bottomSevenR.start("animate")
           ]);
+
+          setShowReplay(true)
+        
     }
 
     useEffect(() => {
@@ -467,6 +510,12 @@ const MultipleApps = () => {
                 >
                     <GranduerAppIcon src={GranduerApp}/>
                 </GranduerAppWrapper>
+                {showReplay && <ReplayContainer>
+                    <Replay onClick={handleClick}>
+                        <ReplayIcon src={replayIcon}/>
+                        <ReplayText> Replay</ReplayText>
+                    </Replay>
+                </ReplayContainer>}
             </AppsWrapper>
         </Container>
     )
