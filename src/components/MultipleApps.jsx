@@ -12,17 +12,14 @@ import roboIcon from "../images/roboIcon.webp";
 import philipsIcon from "../images/philipsIcon.webp";   
 import samsungIcon from "../images/samsungIcon.webp";
 import trueviewIcon from "../images/trueviewIcon.webp";
-import iphoneWallPaper from "../images/IphoneWallPaper.jpeg";
 import GranduerApp from "../images/grandeurApp.svg"
-import Arrow from "./Arrow";
-import { useAnimationControls, motion, delay, AnimatePresence } from "framer-motion";
+import { useAnimationControls, motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import StraightLineLT from "./StraightLineLT";
 
 import StraightLineRT from "./StraightLineRT";
 import SevenL from "./SevenL";
 import SevenR from "./SevenR";
-import LRight from "./LRight";
 import BottomSevenL from "./BottomSevenL";
 import BottomSevenR from "./BottomSevenR";
 
